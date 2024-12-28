@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.barkobi.myapplication_studentapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.barkobi.myapplication_studentapp"
