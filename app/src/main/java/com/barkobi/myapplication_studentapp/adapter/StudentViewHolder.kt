@@ -17,11 +17,13 @@ class StudentViewHolder(
     private var idTextView: TextView? = null
     private var checkBox: CheckBox? = null
     private var student: Student? = null
+    private var numberTextView: TextView? = null
 
     init {
         nameTextView = itemView.findViewById(R.id.student_row_name_text_view)
         idTextView = itemView.findViewById(R.id.student_row_id_text_view)
         checkBox = itemView.findViewById(R.id.student_row_check_box)
+        numberTextView = itemView.findViewById(R.id.student_row_number_text_view)
 
         checkBox?.apply {
             setOnClickListener { view ->
@@ -41,9 +43,11 @@ class StudentViewHolder(
         this.student = student
         nameTextView?.text = student?.name
         idTextView?.text = student?.id
+        numberTextView?.text = student?.number
         checkBox?.apply {
             isChecked = student?.isChecked ?: false
             tag = position
         }
     }
+
 }

@@ -1,6 +1,8 @@
 package com.barkobi.myapplication_studentapp
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,6 +21,7 @@ interface OnItemClickListener {
 class StudentsRecyclerViewActivity : AppCompatActivity() {
 
     private var students: MutableList<Student>? = null
+    var adapter: StudentsRecyclerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,27 +33,40 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
             insets
         }
 
-
         students = Model.shared.students
         val recyclerView: RecyclerView = findViewById(R.id.students_list_activity_recycler_view)
         recyclerView.setHasFixedSize(true)
+        val addStudentButton: Button = findViewById(R.id.AddstudentBTN)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        val adapter = StudentsRecyclerAdapter(students)
+        adapter = StudentsRecyclerAdapter(students)
 
-        adapter.listener = object : OnItemClickListener {
+        adapter?.listener = object : OnItemClickListener {
             override fun onItemClick(position: Int) {
                 Log.d("TAG", "On click Activity listener on position $position")
             }
 
             override fun onItemClick(student: Student?) {
                 Log.d("TAG", "On student clicked name: ${student?.name}")
+
             }
         }
 
         recyclerView.adapter = adapter
 
+        addStudentButton.setOnClickListener {
+            val intent = Intent(this, AddStudentActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
+
+    override fun onResume() {
+        super.onResume()
+        adapter?.notifyDataSetChanged()
+    }
+
 }
