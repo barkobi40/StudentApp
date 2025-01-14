@@ -33,6 +33,8 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
             insets
         }
 
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
         students = Model.shared.students
         val recyclerView: RecyclerView = findViewById(R.id.students_list_activity_recycler_view)
         recyclerView.setHasFixedSize(true)
@@ -50,7 +52,6 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
 
             override fun onItemClick(student: Student?) {
                 Log.d("TAG", "On student clicked name: ${student?.name}")
-
             }
         }
 
