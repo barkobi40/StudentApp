@@ -7,16 +7,11 @@ class Model private constructor() {
     companion object{
         val shared = Model()
     }
-    init{
-        for ( i in 0..20){
-            val student = Student(
-                "Student $i",
-                id = "Student id: $i",
-                number = "Student number: $i",
-                avatarURL = "",
-                isChecked = false
-            )
-            students.add(student)
-        }
+
+    fun add(student: Student){
+        students.add(student)
     }
-}
+
+    }
+
+

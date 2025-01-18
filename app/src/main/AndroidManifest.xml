@@ -12,25 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplicationStudentApp"
         tools:targetApi="31">
+
+        <!-- Launcher Activity -->
         <activity
             android:name=".StudentsRecyclerViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Student Details Activity -->
         <activity
-            android:name=".StudentListViewActivity"
+            android:name=".StudentDetails"
             android:exported="true" />
 
+        <!-- Add Student Activity -->
         <activity
             android:name=".AddStudentActivity"
             android:exported="false" />
+
+        <!-- Edit Student Activity -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:name=".EditStudent"
+            android:exported="false" />
     </application>
 
 </manifest>
