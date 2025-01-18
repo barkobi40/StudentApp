@@ -3,6 +3,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,6 +33,9 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val welcomeTextView: TextView = findViewById(R.id.welcome_text_view)
+        welcomeTextView.text = "Welcome to StudentApp! \n Manage your students easily."
 
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
