@@ -34,9 +34,6 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
             insets
         }
 
-        val welcomeTextView: TextView = findViewById(R.id.welcome_text_view)
-        welcomeTextView.text = "Welcome to StudentApp! \n Manage your students easily."
-
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         students = Model.shared.students
