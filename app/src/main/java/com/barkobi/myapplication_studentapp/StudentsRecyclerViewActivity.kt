@@ -61,8 +61,6 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
             val intent = Intent(this, AddStudentActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 
     override fun onResume() {
@@ -70,4 +68,20 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
         adapter?.notifyDataSetChanged()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == RESULT_OK) {
+            // Check if a student was deleted
+            val deletedStudentId = data?.getStringExtra("deleted_student_id")
+            if (deletedStudentId != null) {
+                // Find the student and remove it
+                val studentToRemove = students?.find { it.id == deletedStudentId }
+                if (studentToRemove != null) {
+                    students?.remove(studentToRemove)
+                    adapter?.notifyDataSetChanged() // Refresh the RecyclerView
+                }
+            }
+        }
+    }
 }

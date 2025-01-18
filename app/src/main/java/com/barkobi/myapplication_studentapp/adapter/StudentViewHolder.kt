@@ -44,10 +44,17 @@ class StudentViewHolder(
         nameTextView?.text = student?.name
         idTextView?.text = student?.id
         numberTextView?.text = student?.number
+
         checkBox?.apply {
             isChecked = student?.isChecked ?: false
             tag = position
+
+            setOnCheckedChangeListener { _, isChecked ->
+                // Update the student's `isChecked` state in the shared model
+                student?.isChecked = isChecked
+            }
         }
     }
+
 
 }

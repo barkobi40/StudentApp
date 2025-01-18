@@ -9,13 +9,12 @@ import com.barkobi.myapplication_studentapp.R
 import com.barkobi.myapplication_studentapp.StudentDetails
 import com.barkobi.myapplication_studentapp.model.Student
 
-class StudentsRecyclerAdapter(private val students: List<Student>?): RecyclerView.Adapter<StudentViewHolder>() {
+class StudentsRecyclerAdapter(private val students: List<Student>?) : RecyclerView.Adapter<StudentViewHolder>() {
 
     var listener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
-        val inflation = LayoutInflater.from(parent.context)
-        val view = inflation.inflate(R.layout.student_list_row, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.student_list_row, parent, false)
         return StudentViewHolder(view, listener)
     }
 
@@ -28,6 +27,7 @@ class StudentsRecyclerAdapter(private val students: List<Student>?): RecyclerVie
             intent.putExtra("name", students?.get(position)?.name)
             intent.putExtra("id", students?.get(position)?.id)
             intent.putExtra("number", students?.get(position)?.number)
+            intent.putExtra("isChecked", students?.get(position)?.isChecked ?: false)
             holder.itemView.context.startActivity(intent)
         }
     }
